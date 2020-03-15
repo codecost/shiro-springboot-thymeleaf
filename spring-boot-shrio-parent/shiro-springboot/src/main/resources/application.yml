@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    username: root
+    password: meroot
+    url: jdbc:mysql://localhost:3306/mybatis?useSSL=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    # springboot默认是不注入这些属性值的，需要自己绑定。
+    # druid数据源专用配置
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM DUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    #   配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙，防止sql注入
+    #    filters: stat,wall,log4j
+    #springboot2.0要将log4j改为slf4j,或者改logback
+    #如果运行时报错java.lang.ClassNotFoundException: org.apache.log4j.Priority,导入log4j依赖即可。
+    filter: stat,wall,slf4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+#    schema:
+#      - classpath:sql/department.sql
+#      - classpath:sql/employee.sql
+
+#    initialization-mode: ALWAYS
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.crazy.pojo
