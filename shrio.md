@@ -54,3 +54,33 @@ SpringBoot集成shiro
 
 ##### shrio授权实现
 
+### git连接顺序
+
+##### 1.创建一个和远程仓库同名的文件夹
+
+##### 2.git init
+
+##### 3.**连接远程仓库**(下面两种方式都可以)
+
+```
+git remote add origin git@github.com:yourName/repositoryname.git
+git remote add origin https://github.com/yourName/repositoryname.git
+```
+
+##### 4.**从远程仓库pull文件**(若远程仓库没有文件，直接执行下列步骤)
+
+```
+git pull origin master
+```
+
+##### 5. **将本地文件push到远程仓库**(若没有文件则手动创建) ，下列命令选择执行
+
+```
+git status　　　　　　　　　　查看工作目录的状态
+
+git add <file>　　　　　　　　将文件添加到暂存区
+
+git commit -m "commnet" 　　提交更改,添加备注信息(此时将暂存区的信息提交到本地仓库)
+
+git push origin master 　　 将本地仓库的文件push到远程仓库(若 push 不成功，可加 -f 进行强推操作)
+```
